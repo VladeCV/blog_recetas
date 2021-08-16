@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Receta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RecetaController extends Controller
@@ -29,7 +30,9 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        return view('/recetas/create');
+        $categorias = DB::table('categoria_receta')->get()->pluck('nombre','id');
+
+        return view('/recetas/create')->with('categorias',$categorias);
     }
 
     /**
@@ -41,11 +44,23 @@ class RecetaController extends Controller
     public function store(Request $request)
     {
         $data=request()->validate([
-            'titulo'=>'required'
+            'titulo'=>'required',
+            'categoria'=>'required',
+            'preparacion'=>'required',
+            'ingredientes'=>'required',
+            'imagen'=>'required|image',
         ]);
-        DB::table('recetas')->insert(
+
+        $ruta_imagen=$request['imagen']->store('upload-recetas','public');
+
+        DB::table('receta')->insert(
             [
-                'titulo'=>$data['titulo']
+                'titulo'=>$data['titulo'],
+                'preparacion'=>$data['preparacion'],
+                'ingredientes'=>$data['ingredientes'],
+                'imagen'=>$ruta_imagen,
+                'user_id'=> Auth::user()->id,
+                'categoria_id'=>$data['categoria']
             ]
         );
 
