@@ -13,7 +13,7 @@ class CreateCategoriaRecetaTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria_receta', function (Blueprint $table) {
+        Schema::create('categoria_recetas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateCategoriaRecetaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria_receta');
+        Schema::dropIfExists('categoria_recetas');
     }
 }
