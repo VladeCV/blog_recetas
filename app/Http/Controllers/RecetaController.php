@@ -118,6 +118,8 @@ class RecetaController extends Controller
      */
     public function update(Request $request, Receta $receta)
     {
+        $this->authorize('update',$receta);
+
         $data=request()->validate([
             'titulo'=>'required',
             'categoria'=>'required',
@@ -153,6 +155,10 @@ class RecetaController extends Controller
      */
     public function destroy(Receta $receta)
     {
-        //
+        $this->authorize('delete',$receta);
+
+        $receta->delete();
+
+        return redirect()->action('App\Http\Controllers\RecetaController@index');
     }
 }

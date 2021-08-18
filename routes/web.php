@@ -23,6 +23,7 @@ Route::post('/recetas','App\Http\Controllers\RecetaController@store')->name('rec
 Route::get('recetas/{receta}','App\Http\Controllers\RecetaController@show')->name('recetas.show');
 Route::get('recetas/{receta}/edit','App\Http\Controllers\RecetaController@edit')->name('recetas.edit');
 Route::put('recetas/{receta}','App\Http\Controllers\RecetaController@update')->name('recetas.update');
+Route::delete('recetas/{receta}','App\Http\Controllers\RecetaController@destroy')->name('recetas.destroy');
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
