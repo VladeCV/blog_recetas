@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" integrity="sha512-CWdvnJD7uGtuypLLe5rLU3eUAkbzBR3Bm1SFPEaRfvXXI2v2H5Y0057EMTzNuGGRIznt8+128QIDQ8RqmHbAdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 @section('botones')
-    <a  href="{{route('recetas.index')}}" class="btn btn-primary mr-2 text-white"> Volver</a>   
+    <a  href="{{route('recetas.index')}}" class="btn btn-outline-primary mr-2 font-weight-bold"> Volver</a>   
 @endsection
 
 @section('content')
